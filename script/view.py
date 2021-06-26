@@ -10,17 +10,19 @@ class Application(Frame):
         self.master.title("Micromemo")
         self.pack(fill=BOTH, expand=1)
 
-        self.card_frame = Frame(self, bg="#181818", highlightbackground="black", highlightthickness=1)
+        self.card_frame = Frame(self, bg="#888", highlightbackground="black", highlightthickness=1)
         self.card_frame.pack(fill=BOTH, expand=True, side=TOP)
 
         self.buttons_frame = Frame(self)
         self.buttons_frame.pack(fill=X, side=BOTTOM, padx=8, pady=8)
 
-        self.question_label = Label(self.card_frame, text="Micromemo", borderwidth=2, relief="groove", fg="#00F")
+        self.question_label = Label(self.card_frame, text="Micromemo", borderwidth=2, relief="groove")
+        self.question_label.config(fg="#00F", bg="#999")
         self.question_label.config(font=("Verdana", 36))
         self.question_label.pack(expand=True)
 
-        self.answer_label = Label(self.card_frame, text="↙ Click « Load... »", borderwidth=2, relief="groove", fg="#0F0")
+        self.answer_label = Label(self.card_frame, text="↙ Click « Load... »", borderwidth=2, relief="groove")
+        self.answer_label.config(fg="#0F0", bg="#999")
         self.answer_label.config(font=("Verdana", 36))
         self.answer_label.pack(expand=True)
 
@@ -37,7 +39,7 @@ class Application(Frame):
         self.reverse_button.config(state=NORMAL)
         self.next_button.config(text="Start", state=NORMAL)
         self.question_label.config(text=message)
-        self.answer_label.config(text="Click « Start »")
+        self.answer_label.config(text="Click « Start » ↘")
         self.answer_label.pack(expand=True)
 
     def prompt_question(self, question, answer):

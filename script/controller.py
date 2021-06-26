@@ -17,10 +17,13 @@ class Controller:
 
     def load_button(self):
         filepath = filedialog.askopenfilename()
+        if not filepath: return
 
-        if filepath and self.model.load(filepath):
+        if self.model.load(filepath):
             self.view.get_ready("Micromemo")
             messagebox.showinfo("Cards loaded", "{} cards loaded".format(self.model.count()))
+        else:
+            messagebox.showinfo("Error", "Could not load .csv file {}".format(filepath))
 
     def next_button(self):
         if self.model.state == State.CARD_FLIPPED or self.model.state == State.READY:

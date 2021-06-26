@@ -22,12 +22,19 @@ class MicroMemo:
     def load(self, path):
         with open(path) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=",")
-            self.initialize()
+            questions = []
+            answers = []
 
-            for row in csv_reader:
-                self.questions.append(row[0])
-                self.answers.append(row[1])
+            try:
+                for row in csv_reader:
+                    questions.append(row[0])
+                    answers.append(row[1])
+            except (csv.Error, IndexError) as e:
+                return False
 
+        self.initialize()
+        self.questions = questions
+        self.answers = answers
         self.state = State.READY
         return True
 
