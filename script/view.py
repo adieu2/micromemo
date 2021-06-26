@@ -44,7 +44,7 @@ class Application(Frame):
         self.question_label.config(text=question)
         self.answer_label.config(text=answer)
         self.answer_label.pack_forget()
-        self.view.next_button.config(text="Show answer")
+        self.next_button.config(text="Show answer")
 
     def show_answer(self):
         self.answer_label.pack(expand=True)

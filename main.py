@@ -7,7 +7,7 @@ from script.view import *
 root = Tk()
 
 # Size configuration
-root.geometry("800x300")
+root.geometry("600x200")
 root.maxsize(1200, 400)
 root.minsize(400, 200)
 
