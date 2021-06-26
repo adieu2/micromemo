@@ -1,6 +1,8 @@
 import csv
 import random
 
+from script.constants import *
+
 class MicroMemo:
 
     def __init__(self):
@@ -12,29 +14,25 @@ class MicroMemo:
         self.i = None
         self.filepath = None
         self.reverse_mode = False
-        self.state = "NO_DECK_LOADED" # ["NO_DECK_LOADED", "READY", "FLIP", "NO_FLIP"]
+        self.state = State.NO_DECK
 
     def count(self):
         return len(self.questions)
 
     def load(self, path):
-        self.initialize()
-
         with open(path) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=",")
+            self.initialize()
 
             for row in csv_reader:
                 self.questions.append(row[0])
                 self.answers.append(row[1])
 
-        self.state = "READY"
+        self.state = State.READY
         return True
 
     def set_reverse_mode(self, mode):
         self.reverse_mode = mode
-
-    def refresh(self):
-        self.load(self.filepath)
 
     def has_file_loaded(self):
         return self.filepath is not None

@@ -33,5 +33,22 @@ class Application(Frame):
         self.next_button = Button(self.buttons_frame, text="Start", state=DISABLED, height=2)
         self.next_button.pack(side=RIGHT)
 
+    def get_ready(self, message):
+        self.reverse_button.config(state=NORMAL)
+        self.next_button.config(text="Start", state=NORMAL)
+        self.question_label.config(text=message)
+        self.answer_label.config(text="Click « Start »")
+        self.answer_label.pack(expand=True)
+
+    def prompt_question(self, question, answer):
+        self.question_label.config(text=question)
+        self.answer_label.config(text=answer)
+        self.answer_label.pack_forget()
+        self.view.next_button.config(text="Show answer")
+
+    def show_answer(self):
+        self.answer_label.pack(expand=True)
+        self.next_button.config(text="Next card")
+
     def client_exit(self):
         exit()
