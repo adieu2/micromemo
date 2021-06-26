@@ -52,4 +52,7 @@ class MicroMemo:
             return self.answers[self.i]
 
     def next_card(self):
-       self.i = random.randint(1, self.count()) - 1 
+        previous = self.i
+
+        while (self.i == previous):
+            self.i = random.randint(1, self.count()) - 1 
